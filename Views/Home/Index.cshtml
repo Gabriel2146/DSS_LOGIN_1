@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold text-primary">Bienvenido a DSS Login</h1>
+                <p class="lead text-muted">Una aplicación segura con autenticación Keycloak y gestión de productos.</p>
+                <div class="mt-4">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <a href="@Url.Action("Index", "Productos")" class="btn btn-primary btn-lg me-3">Gestionar Productos</a>
+                        <form method="post" asp-controller="Home" asp-action="Logout" class="d-inline">
+                            <button type="submit" class="btn btn-outline-secondary btn-lg">Cerrar Sesión</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login", "Home")" class="btn btn-success btn-lg">Iniciar Sesión</a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://via.placeholder.com/600x400/007bff/ffffff?text=DSS+Login" alt="DSS Login" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-shield-check text-success" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Autenticación Segura</h5>
+                    <p class="card-text">Integración con Keycloak para una autenticación robusta y segura.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-database text-primary" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Gestión de Productos</h5>
+                    <p class="card-text">CRUD completo para administrar productos de manera eficiente.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-palette text-warning" style="font-size: 3rem;"></i>
+                    <h5 class="card-title mt-3">Interfaz Atractiva</h5>
+                    <p class="card-text">Diseño moderno y responsivo con Bootstrap para una experiencia óptima.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
