@@ -17,9 +17,9 @@ builder.Services.AddAuthentication(options =>
 {
     options.Authority = builder.Configuration["Keycloak:Authority"];
     options.ClientId = builder.Configuration["Keycloak:ClientId"];
-    options.ClientSecret = builder.Configuration["Keycloak:ClientSecret"];
     options.ResponseType = "code";
     options.SaveTokens = true;
+    options.RequireHttpsMetadata = false; // Para desarrollo con HTTP
     options.Scope.Add("openid");
     options.Scope.Add("profile");
 });

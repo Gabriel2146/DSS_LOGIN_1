@@ -28,7 +28,7 @@ public class HomeController : Controller
 
     public IActionResult Login()
     {
-        if (!HttpContext.User.Identity.IsAuthenticated)
+        if (!HttpContext.User.Identity?.IsAuthenticated ?? true)
         {
             return Challenge(new AuthenticationProperties { RedirectUri = "/" }, "oidc");
         }
